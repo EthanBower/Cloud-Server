@@ -1,0 +1,460 @@
+html {
+	background: #f2faff;
+	height: 100%;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+}
+
+#current_dir {
+	text-align: center;
+	font-weight: bold;
+	font-size: 35px;
+	color: #525252;
+	margin-top: 0px;
+	padding-top: 10px;
+	margin-bottom:0;
+}
+
+#filecount {
+	text-align: center;
+	font-size: 25px;
+	color: #525252;
+	margin-top: 0px;
+	margin-bottom:35px;
+}
+
+#navbar {
+	width:250px;
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+#filemanager {
+	display: inline-block;
+	height: 100%;
+	background: white;
+	width: calc(100% - 250px);
+	overflow-y: scroll;
+	overflow-x: auto;
+	vertical-align:top;
+}
+
+#selectall, #deselectall, #uploadfile, #uploadfolder, #newfolder, #movefile, #copyfile, #logout {
+	margin-top: 8px;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#logout {
+	color: #ce0000;
+}
+
+#uploadform {
+	margin:0px;
+}
+
+.fileDiv {
+	border-radius: 5px;
+	padding-top: 10px;
+	margin-left: 30px;
+	border-bottom: 1px solid #525252;
+	border-radius: 0px;
+	margin-right: 30px;
+}
+
+.folderDiv {
+	border-radius: 5px;
+	padding-top: 10px;
+	margin-left: 30px;
+	border-bottom: 1px solid #525252;
+	border-radius: 0px;
+	margin-right: 30px;
+}
+
+.modify {
+	margin: 0px 5px;
+	display: inline-block;
+	vertical-align:middle;
+}
+
+.fileLink {
+	margin: 0px 0px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.fileLink a {
+	text-decoration: none;
+}
+
+.folderLink {
+	display: inline-block;
+}
+
+.serverinfodivcontainer {
+	text-align: center;
+}
+
+.serverinfodiv {
+	display: inline-block;
+	padding: 20px;
+	background: #525252;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.serverinfo {
+	margin: 0px 0px;
+	color: white;
+}
+
+.inputButton {
+	-webkit-transition-duration: 0.3s; /* Safari */
+	transition-duration: 0.3s;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	padding: 8px 15px;
+	background: #525252;
+	color: white;
+	border: 2px solid #525252;
+	box-shadow: 0px 0px 0px 0px black;
+	display: block;
+	margin: auto;
+	vertical-align: top;
+	font-size: 13px;
+}
+
+.inputButton:hover, .preview:hover {
+	background: #ececec;
+	color: #525252;
+}
+
+.preview {
+	-webkit-transition-duration: 0.3s; /* Safari */
+	transition-duration: 0.3s;
+	padding: 1px 8px;
+	margin-left: 10px;
+	background: #525252;
+	border-radius: 5px;
+	color: white;
+	border: 2px solid #525252;
+}
+
+.inputButton_navbar {
+	-webkit-transition-duration: 0.3s; /* Safari */
+	transition-duration: 0.3s;
+	border: none;
+	cursor: pointer;
+	padding: 5px;
+	color: #566779;
+	font-weight: bold;
+	display: block;
+	margin-left: 30px;
+    font-size: 17px;
+    background: none;
+}
+
+.inputButton_navbar:hover {
+	color: #21262b;
+	text-decoration: underline;
+}
+
+.inputButton_delete {
+	-webkit-transition-duration: 0.3s; /* Safari */
+	transition-duration: 0.3s;
+	border: none;
+	cursor: pointer;
+	padding: 8px 15px;
+	color: white;
+	display: inline-block;
+    font-size: 17px;
+    background: #ce0000;
+    border-radius: 5px;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+.inputButton_delete:hover {
+	background:#a50000;
+}
+
+.textBox {
+	border: 2px solid #525252;
+	padding: 5px;
+	border-radius: 5px;
+	background: #ececec;
+	text-align:center;
+}
+
+.forms {
+	margin: 10px 0px;
+}
+
+.forms2 {
+	margin: 10px 0px;
+}
+
+.forms3 {
+	text-align: center;
+	margin: 0;
+	margin-bottom: 5px;
+	display:none;
+}
+
+.foldersvg { 
+	vertical-align:middle;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.inlineblockformdiv {
+	margin: 5px 0px;
+	text-align: center;
+}
+
+.inlineblockformdiv p{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.dir_nav_buttons form {
+	display:inline-block;
+	margin-left: 10px;
+	vertical-align: top;
+}
+
+.folderButton {
+    background: #ececec;
+    border-radius: 5px;
+    padding: 2px 9px;
+    border: 2px solid #525252;
+    cursor:pointer;
+}
+
+.renameButton {
+	border: none;
+    background: white;
+    padding: 0px;
+    cursor:pointer;
+    color: #566779;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.renameButton:hover {
+	color: blue;
+}
+
+.modify_dropdown {
+	background: white;
+	padding: 20px;
+	display: none;
+	position:absolute;
+	left: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 1px dimgrey;
+}
+
+.modify_dropdown form {
+	text-align:center;
+	display: none;
+}
+
+.folderLink {
+	display: inline-block;
+	margin: 0px 0px;
+}
+
+.folderinfo, .fileinfo {
+	margin: 10px 28px;
+	margin-right: 0px;
+	margin-top: 0px;
+	display: block;
+	color: #566779;
+	font-size: 14px;
+	display: inline-block;
+}
+
+.dropdown_spacing {
+	margin-top: 10px;
+}
+
+/* This is the start of the styles for the moveto.php page  */
+.renameForm {
+	display: inline-block;
+}
+
+.movetext {
+	text-align:center;
+	padding: 30px 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+	font-size: 25px;
+	color: #525252;
+}
+
+#moveto {
+	text-align:center;
+	margin:0px;
+}
+
+#moveto input {
+	padding: 15px 55px;
+}
+
+#movetoHome {
+	text-align:left;
+	margin: 0px;
+	margin-left: 15px;
+}
+
+#movetoHome input {
+	padding: 8px 16px;
+}
+
+#movefromcontainer {
+	display: table-cell;
+	width:calc(50% - 16px); /*16px is half the svg width */
+}
+
+#movetocontainer {
+	display: table-cell;
+	width:50%;
+	vertical-align: top;
+	width:calc(50% - 16px); /*16px is half the svg width */
+}
+
+#movecontainer {
+	display: table;
+	width:100%;
+	padding-bottom: 30px;
+}
+
+#movetoarrowcontainer {
+	display: table-cell;
+	text-align: center;
+	vertical-align: top;
+}
+
+#movetoarrowcontainer img{
+	margin-top:30px;
+}
+
+#movecontainermaster {
+	overflow-y: auto;
+	height: 400px;
+	box-shadow: 0px 0px 7px 0px black;
+	background: #ececec;
+}
+
+#topcontainer_moveto {
+	margin-bottom: 15px;
+}
+
+#bottomcontainer_moveto {
+	padding-top: 45px;
+	padding-bottom: 10px;
+}
+
+/* This is the end of the styles for the moveto.php page  */
+
+@keyframes slide_open {
+	from {
+		transform-origin: 50% 0%;
+		transform: scaleY(0);
+	}
+	to {
+		transform-origin: 50% 0%;
+		transform: scaleY(1);
+	}
+}
+
+@keyframes slide_openReverse {
+	from {
+		transform-origin: 50% 0%;
+		transform: scaleY(1);
+	}
+	to {
+		transform-origin: 50% 0%;
+		transform: scaleY(0);
+	}
+}
+
+@keyframes unfade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes unfadeReverse {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@media only screen and (max-width: 750px) {
+	body {
+		height: auto;
+	}
+	
+	#navbar {
+		display:block;
+		height: auto;
+		width: 100%;
+		overflow: visible;
+	}
+  
+	#filemanager { /* height is managed by js */
+		display:block;
+		overflow: visible;
+	}
+	
+	.inlineblockformdiv form input, .inlineblockformdiv div input {
+		display:inline-block;
+		margin: 0px 0px !important;
+		margin-top: 3px !important;
+	}
+	
+	.inlineblockformdiv div {
+		display:block;
+		text-align: center;
+	}
+	
+	.inlineblockformdiv, .inlineblockformdiv p{
+		margin: 0px;
+	}
+	
+	.inlineblockformdiv img{ 
+		width: 100px;
+	}
+	
+	.modify_dropdown {
+		left: 36%;
+	}
+	
+	.serverinfodivcontainer {
+		background: #525252;
+	}
+}
+
+
+@media only screen and (max-width: 400px) {
+	.fileDiv, .folderDiv {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+}

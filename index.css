@@ -1,0 +1,57 @@
+html {
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+	margin: 0px;
+}
+
+#passform {
+	display: inline-block;
+	padding: 30px;
+	background: white;
+	border-radius: 5px;
+    box-shadow: 0px 0px 7px black;
+}
+
+#welcomeText {
+	margin-top: 0px;
+}
+
+#password {
+	height: 29.5px;
+	border:none;
+	border-bottom: 1px solid #525252;
+    text-align: center;
+    border-radius:0px;
+}
+
+.verticalAdjust {
+	padding-top: 7vh;
+	text-align: center;
+}
+
+.cloud {
+	width:140px;
+}
+
+.inputButton {
+	-webkit-transition-duration: 0.3s; /* Safari */
+	transition-duration: 0.3s;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	padding: 8px 15px;
+	background: #525252;
+	color: white;
+	border: 2px solid #525252;
+	box-shadow: 0px 0px 0px 0px black;
+	vertical-align: middle;
+	margin: auto;
+	font-size: 13px;
+}
+
+.inputButton:hover {
+	background: #ececec;
+	color: #525252;
+}
