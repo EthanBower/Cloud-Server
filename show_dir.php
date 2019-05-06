@@ -17,9 +17,9 @@ function directory_scan($directory, $selectall) { // This function scans for eve
 $scanned_directory = array_diff(scandir($directory), array("..", ".")); //This removes all of the unessesary results
 
 for ($i = 0; $i < count(scandir($directory)); $i = $i + 1) {
-	if($directory == "uploads" && $i == 0) { //display trash if on home directory upon first iteration of loop
-		if (!is_dir("uploads/Trash")) {
-			mkdir("uploads/Trash");
+	if($directory == "uploads/" . $_SESSION["username"] && $i == 0) { //display trash if on home directory upon first iteration of loop
+		if (!is_dir("uploads/" . $_SESSION["username"] . "/Trash")) {
+			mkdir("uploads/" . $_SESSION["username"] . "/Trash");
 		}
 		echo "<div class='folderDiv' id='trash'>";
 		echo "<div>";
@@ -61,7 +61,7 @@ for ($i = 0; $i < count(scandir($directory)); $i = $i + 1) {
 		if ($selectall == "1") {
 			echo "<script>document.getElementById('fileDivID_" . $i . "').style.background = '#abdfff'; document.getElementById('fileRenameID_" . $i . "').style.background = '#abdfff';</script>"; //since JS is not loaded yet when the select all button is pressed, this script is here to highlight everything
 		}
-	} else if (isset($scanned_directory[$i]) && $directory . "/" . $scanned_directory[$i] != "uploads/Trash") { // Makes this a special dir box if a item is folder. Dont re-scan trash folder
+	} else if (isset($scanned_directory[$i]) && $directory . "/" . $scanned_directory[$i] != "uploads/" . $_SESSION["username"] . "/Trash") { // Makes this a special dir box if a item is folder. Dont re-scan trash folder
 		echo "<div class='folderDiv' id='folderDivID_". $i . "'>";
 		echo "<div>";
 		if ($selectall == "1") { // if "select all" button is pressed
@@ -96,8 +96,8 @@ for ($i = 0; $i < count(scandir($directory)); $i = $i + 1) {
 if (is_dir($directory)) { // if the current directory exists, do a scan
 	directory_scan($directory, $selectall);
 } else {
-	$_SESSION["directory"] = "uploads";
-	$directory = "uploads";
+	$_SESSION["directory"] = "uploads/" . $_SESSION["username"];
+	$directory = $_SESSION["directory"];
 
 	directory_scan($directory, $selectall);
 }

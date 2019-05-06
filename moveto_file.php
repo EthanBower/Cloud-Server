@@ -31,7 +31,7 @@ function directory_scan($directory, $withfiles) { // This function scans for eve
 			echo "</div>";
 			echo "<p class='fileinfo'><b>Type</b>: " . mime_content_type($directory. "/" . $scanned_directory[$i]) . " <b>Size</b>: " . getfilesize($directory . "/" . $scanned_directory[$i], 0) . " <b>Last Modified</b>: " . date("F d Y H:i:s.",filectime($directory. "/" . $scanned_directory[$i])) . "</p> ";			
 			echo "</div>";
-		} else if (isset($scanned_directory[$i]) && $directory . "/" . $scanned_directory[$i] != "uploads/Trash") { // Makes this a special dir box if a item is folder
+		} else if (isset($scanned_directory[$i]) && $directory . "/" . $scanned_directory[$i] != "uploads/" . $_SESSION["username"] . "/Trash") { // Makes this a special dir box if a item is folder
 			echo "<div class='folderDiv'>";
 			echo "<div>";
 			echo "<input type='checkbox' class='modify' name='movefrom[" . $scanned_directory[$i] . "]' form='moveto'>";
@@ -44,7 +44,7 @@ function directory_scan($directory, $withfiles) { // This function scans for eve
 	}
 	
 	for ($i = 0; ($i < count(scandir($directory))) && $withfiles == false; $i = $i + 1) { //$withfiles only outputs files when true. when false, it will output files and folders. This is for the right-side of the page
-		if ($i==0 && $directory != "uploads") { //when $i gets to its first iteration, output the "back a directory" folder
+		if ($i==0 && $directory != "uploads/" . $_SESSION["username"]) { //when $i gets to its first iteration, output the "back a directory" folder
 			echo "<div class='folderDiv'>";
 			echo "<div>";
 			echo "<input type='checkbox' class='modify' name='moveto[../]' form='moveto'>";
@@ -59,7 +59,7 @@ function directory_scan($directory, $withfiles) { // This function scans for eve
 			echo "<div class='folderDiv'>";
 			echo "<div>";
 			echo "<input type='checkbox' class='modify' name='moveto[" . $scanned_directory[$i] . "]' form='moveto'>";
-			if ($directory . "/" . $scanned_directory[$i] == "uploads/Trash") {
+			if ($directory . "/" . $scanned_directory[$i] == "uploads/" . $_SESSION["username"] . "/Trash") {
 				echo "<img src='Assets/SVG/bin.svg' class='foldersvg'/>";
 			} else {
 				echo "<img src='Assets/SVG/folder.svg' class='foldersvg'/>";

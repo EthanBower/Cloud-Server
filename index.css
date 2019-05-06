@@ -18,7 +18,7 @@ body {
 	margin-top: 0px;
 }
 
-#password {
+#password, #username, #password2 {
 	height: 29.5px;
 	border:none;
 	border-bottom: 1px solid #525252;

@@ -8,7 +8,7 @@ include_once 'filesizes.php'; //this file contains functions needed to get file 
 $directory = $_SESSION["directory"];
 $fileCount = count(scandir($directory)) - 2; //get the amount of files in directory. since scandir includes "." and "..", subtract 2
 	
-echo "<p id='current_dir'>Home" . ltrim($directory, "uploads") . "</p>"; //get rid of "uploads" in directory string.
+echo "<p id='current_dir'>Home" . substr($directory, strlen("uploads/" . $_SESSION["username"])) . "</p>"; //get rid of "uploads" in directory string.
 echo "<p id='filecount' style='margin-bottom:0px;'><b>Total items</b>: " . $fileCount . "</p>";
 echo "<p id='filecount'><b>Total Folder Size</b>: " . getfilesize($directory,1) . "</p>";
 	//echo "Basename: " . basename($directory) . "<br>";

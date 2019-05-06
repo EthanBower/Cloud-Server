@@ -6,7 +6,7 @@ session_start();
 include "checkpass.php";
 
 //change directory status to uploads, which is home folder
-$_SESSION["directory"] = "uploads";
+$_SESSION["directory"] = "uploads/" . $_SESSION["username"];
 $_SESSION["selectall"] = "0";
 
 header("Location: index2.php");	

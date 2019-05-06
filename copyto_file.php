@@ -35,7 +35,7 @@ function directory_scan($directory, $withfiles) { // This function scans for eve
 	}
 	
 	for ($i = 0; ($i < count(scandir($directory))) && $withfiles == false; $i = $i + 1) { //go through this for loop in order to only output files
-		if ($i==0 && $directory != "uploads") { //when $i gets to its first iteration, output the "back a directory" folder IF not currently in the home folder
+		if ($i==0 && $directory != "uploads/" . $_SESSION["username"]) { //when $i gets to its first iteration, output the "back a directory" folder IF not currently in the home folder
 			echo "<div class='folderDiv'>";
 			echo "<div>";
 			echo "<input type='checkbox' class='modify' name='moveto[../]' form='moveto'>";
@@ -46,7 +46,7 @@ function directory_scan($directory, $withfiles) { // This function scans for eve
 			echo "</div>";
 		}
 		
-		if (isset($scanned_directory[$i]) && is_dir($directory . "/" . $scanned_directory[$i]) && $directory . "/" . $scanned_directory[$i] != "uploads/Trash") { // Makes this a special dir box if an item is folder
+		if (isset($scanned_directory[$i]) && is_dir($directory . "/" . $scanned_directory[$i]) && $directory . "/" . $scanned_directory[$i] != "uploads/". $_SESSION["username"] . "/Trash") { // Makes this a special dir box if an item is folder
 			echo "<div class='folderDiv'>";
 			echo "<div>";
 			echo "<input type='checkbox' class='modify' name='moveto[" . $scanned_directory[$i] . "]' form='moveto'>";

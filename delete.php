@@ -23,14 +23,14 @@ if (!empty($_POST['edit'])) {
 	foreach($_POST['edit'] as $item => $n) { //$item returns app name, $n is checkbox status
 		$directory = $_SESSION["directory"] . "/" . $item;
 		
-		if($_SESSION["directory"] == "uploads/Trash") { //if in trash, actually delete the files
+		if($_SESSION["directory"] == "uploads/" . $_SESSION["username"] ."/Trash") { //if in trash, actually delete the files
 			if (is_dir($directory)) {
 				remove_path($directory);
 			} else {
 				unlink($directory);
 			}
 		} else { //if not in trash, move to trash
-			rename($directory, "uploads/Trash/" . $item);
+			rename($directory, "uploads/" . $_SESSION["username"] . "/Trash/" . $item);
 		}
 		
 		//echo count($_POST['edit']); //get the amount of files selected

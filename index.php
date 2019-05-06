@@ -29,11 +29,17 @@
 			}
 		    ?>
 		</div>
-		<form action="cloudenterpassword.php" method="post" enctype="multipart/form-data" style="text-align: center;" id="passform">
+		<div id="passform">
 		    <?php include "welcome.php";?>
-		    <input type="password" placeholder="Enter Password" name="password" id="password" multiple="multiple">
-		    <input type="submit" value="Log In" name="submit" class="inputButton"><br>
-		</form>
+		    <form action="cloudenterpassword.php" method="post" enctype="multipart/form-data" style="text-align: center;">
+			<input placeholder="Enter Username" name="username" id="username" multiple="multiple">
+			<input type="password" placeholder="Enter Password" name="password" id="password" multiple="multiple">
+			<input type="submit" value="Log In" name="submit" class="inputButton"><br>
+		    </form>
+		    <form action="/NewUserSetup/newUserIndex.php" method="post" enctype="multipart/form-data" style="text-align: center; margin-top: 30px;">
+			<input type="submit" value="New User" name="newuser" class="inputButton"><br>
+		    </form>
+		</div>
 	    </div>
 	</div>
     </body>
