@@ -12,7 +12,7 @@
 		chmod($path, 0776);
 	}
 	
-	if (isset($_POST["username"]) && isset($_POST["password"]) && $_POST["adminPassword"] == $adminPassword && $_POST["password"] == $_POST["password2"] && userentered_stringCheck($_POST["username"])) {
+	if (isset($_POST["username"]) && isset($_POST["password"]) && $_POST["adminPassword"] == $adminPassword && $_POST["password"] == $_POST["password2"] && userentered_stringCheck($_POST["username"]) && mysqloptions::$use_database == true) {
 		
 		$conn = mysqli_connect(mysqloptions::$servername, mysqloptions::$username, mysqloptions::$password, mysqloptions::$dbname);
 		
@@ -23,7 +23,7 @@
 			mysqli_query($conn, "CREATE TABLE `user_login` (
 								`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
 								`username` VARCHAR(255) NOT NULL, 
-								`password` VARCHAR(250) NOT NULL, 
+								`password` VARCHAR(255) NOT NULL, 
 								`userdirectory` VARCHAR(255) NOT NULL);"); //add the required tables
 		}
 					
@@ -53,6 +53,9 @@
 		
 	} else if ($_POST["adminPassword"] != $adminPassword) {
 		$message = "<p>Wrong admin password.</p>";
+		$error = true;
+	} else if (!mysqloptions::$use_database) {
+		$message = "<p>You have turned off database privledges. You'll need to enable this cloud service to use databases.</p>";
 		$error = true;
 	} else {
 		$message = "<p>Check to make sure that you entered in the required fields, and no illegal characters are added.</p>";
