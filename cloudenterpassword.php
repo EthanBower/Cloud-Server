@@ -4,14 +4,15 @@
 	
 	session_start();
 	
-	$custompassword="swag";
+	$customusername = "localadmin"; //USE ONLY WHEN SQL SERVER IS DISABLED IN "mysqlParams.php"
+	$custompassword="password"; //USE ONLY WHEN SQL SERVER IS DISABLED IN "mysqlParams.php"
 	$_SESSION['maxLoginAttempts'] = 3;
 	$_SESSION['clientReject_duration'] = 600; //timeout after 10 min
 	if (!isset($_SESSION['loginReject'])) { //if not set, make it false. This is here so that loginReject will be defined false only once
 		$_SESSION['loginReject'] = false;
 	}
 
-	function initializeLogin($directory, $username) {
+	function initializeLogin($directory, $username) { //This function sets up the user's session
 		$_SESSION['LAST_ACTIVITY'] = $_SERVER['REQUEST_TIME']; // update last activity time stamp. This way, the user will NOT be logged out when logging in for the first time
 		$_SESSION["passAttemptCount"] = 0; //reset failed password attempts
 		$_SESSION["loginStatus"] = "logged"; //determines if user logged in
@@ -21,13 +22,20 @@
 		$_SESSION["username"] = $username;
 	}
 	
-	$conn = mysqli_connect(mysqloptions::$servername, mysqloptions::$username, mysqloptions::$password, mysqloptions::$dbname);
-	$username = mysqli_real_escape_string($conn, $_POST["username"]); //for security, make sure there is an escape string
-	$output = mysqli_query($conn, "SELECT `username`, `password`, `userdirectory` FROM `user_login` WHERE `username` = '" . $username . "'"); //Get username/password from database if it exists with entered in credentials
-	$output = mysqli_fetch_assoc($output);
+	if (mysqloptions::$use_database) {
+		$conn = mysqli_connect(mysqloptions::$servername, mysqloptions::$username, mysqloptions::$password, mysqloptions::$dbname);
+		$username = mysqli_real_escape_string($conn, $_POST["username"]); //for security, make sure there is an escape string
+		$output = mysqli_query($conn, "SELECT `username`, `password`, `userdirectory` FROM `user_login` WHERE `username` = '" . $username . "'"); //Get username/password from database if it exists with entered in credentials
+		$output = mysqli_fetch_assoc($output);
+	} else {
+		$output["username"] = $customusername;
+		$output["password"] = $custompassword;
+		$output["userdirectory"] = "uploads/" . $customusername;
+	}
 	
-	if(count($output) != 0 && password_verify($_POST["password"], $output["password"]) && $_SESSION['loginReject'] == false) {
-		if (!is_dir("./uploads")) {
+	//The below statement says "if there is something in $output, AND ((the database is enabled AND the hashed password is correct) OR (the database is disabled AND the non-hashed passwords are correct AND the username matches)) AND the user hasnt entered the incorrect password a few times in a row"  
+	if(count($output) != 0 && ((mysqloptions::$use_database && password_verify($_POST["password"], $output["password"])) || (!mysqloptions::$use_database && $_POST["password"] == $output["password"] && $_POST["username"] == $output["username"])) && $_SESSION['loginReject'] == false) {
+		if (!is_dir("./uploads")) { //if the "uploads" directory doesnt exist for whatever reason, make one
 			mkdir("./uploads");
 			chmod("./uploads", 0775);
 		}

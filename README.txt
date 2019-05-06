@@ -31,6 +31,7 @@ In order to get the cloud to work 100% as intended, there are a few things that 
 	-PHP should detect that the database doesn't exist on the first run. If all things work, it will make it automatically with the following command:
 		-CREATE TABLE `user_login` (`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT, `username` VARCHAR(255) NOT NULL, `password` VARCHAR(250) NOT NULL,`userdirectory` VARCHAR(255) NOT NULL);
 	-The entered password for the user will be hashed.
+	-If you do not want to use a database, you can turn it off, however you will be restricted to one account. By defualt, the username is "localadmin" and the password is "password". You can change this in the first few lines of "cloudenterpassword.php"
 
 4c) When signing up for a new user, there is an "Admin Password" input box. The purpose of this password is to prevent unwanted people from making an account. By default, the password is "test". You can change it in "NewUserSetup/newUserServerSetup.php". From there, you'll see the "$adminPassword" variable.
 
